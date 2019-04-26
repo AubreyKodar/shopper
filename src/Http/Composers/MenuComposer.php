@@ -54,25 +54,13 @@ class MenuComposer
 
         $this->shopper->menu->add('Dashboard', [
             'slug'       => 'Home',
-            'icon'       => 'fas fa-palette',
-            'route'      => route('shopper.dashboard.home'),
+            'icon'       => 'fas fa-store',
+            'route'      => route('shopper.dashboard.e-commerce'),
             'label'      => __('Welcome'),
             'groupname'  => __('Dashboard'),
             'childs'     => false,
             'divider'    => false,
             'active'     => 'shopper.dashboard.home',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 1,
-        ]);
-
-        $this->shopper->menu->add('Dashboard', [
-            'slug'       => 'E-commerce',
-            'icon'       => 'fas fa-store',
-            'route'      => route('shopper.dashboard.e-commerce'),
-            'label'      => __('E-commerce'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.dashboard.e-commerce',
             //'permission' => 'dashboard.systems.settings',
             'sort'       => 1,
         ]);
@@ -388,31 +376,6 @@ class MenuComposer
             'active'     => 'shopper.settings.globals.*',
             //'permission' => 'dashboard.systems.settings',
             'sort'       => 5,
-        ]);
-
-        $this->shopper->menu->add('Settings', [
-            'slug'       => 'Country',
-            'icon'       => 'fa fa-globe',
-            'route'      => route('shopper.settings.locations.countries.index'),
-            'groupname'  => __('Location & Translate'),
-            'label'      => __('Countries & States'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.settings.locations.countries.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 5,
-        ]);
-
-        $this->shopper->menu->add('Settings', [
-            'slug'       => 'Language',
-            'icon'       => 'fa fa-language',
-            'route'      => route('shopper.settings.translate.index'),
-            'label'      => __('Manage Language'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.settings.translate.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 6,
         ]);
 
         /*$this->shopper->menu->add('Settings', [

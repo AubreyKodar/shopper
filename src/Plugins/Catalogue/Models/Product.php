@@ -50,8 +50,6 @@ class Product extends Model implements ViewableContract
      */
     protected $hidden = [
         'sort_order',
-        'brand',
-        'category',
         'created_at',
         'updated_at'
     ];

@@ -6,7 +6,7 @@
                 <ul class="nav flex-column" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link-brand" href="{{ route('shopper.dashboard.home') }}">
-                            <img src="{{ asset('/shopper/img/logo-white.svg') }}" alt='logo shopper' width="30px"/>
+                            <img src="{{ asset('/shopper/img/logo-white.svg') }}" alt='logo shopper' width="50px"/>
                         </a>
                     </li>
                     {!! $shopper->menu()->render('Main') !!}

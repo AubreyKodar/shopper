@@ -52,67 +52,7 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $user = Sentinel::check();
-        $os = php_uname('s');
-        $laravel = app()->version();
-        $database = $this->getDatabase();
-        $php = phpversion();
-
-        $algolia = $this->algoliaIndices();
-
-        $client = new Client();
-        $package = $client->get('mckenziearts/shopper');
-        $versions = array_map(function ($version) {
-            return $version->getVersion();
-        }, $package->getVersions());
-
-        $currentVersion = Shopper::version();
-        $latestVersion = Version::latest($versions);
-        $updateAvailable = version_compare($currentVersion, $latestVersion, '<');
-
-        try {
-            $response = Twitter::getFollowersIds(['format' => 'array']);
-            $followers = [
-                'count' => count($response['ids']),
-                'message' => __('Numbers of followers of your twitter account')
-            ];
-        } catch (\Exception $e) {
-            $followers = [
-                'count' => 0,
-                'message' => $e->getMessage(). ' '. __('Set your twitter .env variables')
-            ];
-        }
-
-        try {
-            $certificate = SslCertificate::createForHostName(request()->getHost());
-            $sslCertificate = [
-                'status' => 'success',
-                'expiration_date' => $certificate->expirationDate()->diffForHumans(),
-                'expiration_date_in_days' => $certificate->expirationDate()->diffInDays()
-            ];
-        } catch (\Exception $e) {
-            $sslCertificate = [
-                'status' => 'failed',
-                'message' => $e->getMessage()
-            ];
-        }
-
-        return view(
-            'shopper::pages.dashboard.index',
-            compact(
-                'user',
-                'os',
-                'laravel',
-                'database',
-                'php',
-                'sslCertificate',
-                'algolia',
-                'currentVersion',
-                'latestVersion',
-                'updateAvailable',
-                'followers'
-            )
-        );
+        return redirect()->route('shopper.dashboard.e-commerce');
     }
 
     /**

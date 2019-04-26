@@ -4,6 +4,7 @@ namespace Mckenziearts\Shopper\Plugins\Users\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Mckenziearts\Shopper\Plugins\Catalogue\Models\Review;
 use Mckenziearts\Shopper\Plugins\Orders\Models\Order;
@@ -15,7 +16,7 @@ use Mckenziearts\Shopper\Plugins\Users\Traits\HasWallet;
  */
 class User extends Authenticatable
 {
-    use Notifiable, Searchable, HasWallet;
+    use Notifiable, Searchable, HasWallet, HasApiTokens;
 
     /**
      * {@inheritDoc}
