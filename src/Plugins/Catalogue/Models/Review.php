@@ -30,7 +30,6 @@ class Review extends Model
      * {@inheritDoc}
      */
     protected $hidden = [
-        'created_at',
         'updated_at'
     ];
 
