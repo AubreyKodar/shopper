@@ -273,22 +273,10 @@ class MenuComposer
         ]);
 
         $this->shopper->menu->add('Promo', [
-            'slug'       => 'Coupon',
-            'icon'       => 'fas fa-gift',
-            'route'      => route('shopper.promo.coupons.index'),
-            'label'      => __('Coupons'),
-            'groupname'  => __('Promotion'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.promo.coupons.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 1,
-        ]);
-
-        $this->shopper->menu->add('Promo', [
             'slug'       => 'Discount',
             'icon'       => 'fa fa-percent',
             'route'      => route('shopper.promo.discounts.index'),
+            'groupname'  => __('Promotion'),
             'label'      => __('Discount'),
             'childs'     => false,
             'divider'    => false,
