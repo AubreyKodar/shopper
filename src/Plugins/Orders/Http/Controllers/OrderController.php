@@ -2,7 +2,9 @@
 
 namespace Mckenziearts\Shopper\Plugins\Orders\Http\Controllers;
 
+use App\Traits\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Mckenziearts\Shopper\Http\Controllers\Controller;
 use Mckenziearts\Shopper\Plugins\Catalogue\Repositories\OfferRepository;
 use Mckenziearts\Shopper\Plugins\Orders\Http\Requests\OrderRequest;
@@ -11,6 +13,8 @@ use Mckenziearts\Shopper\Plugins\Orders\Repositories\OrderRepository;
 
 class OrderController extends Controller
 {
+    use Store;
+
     /**
      * @var OrderRepository
      */
@@ -35,9 +39,16 @@ class OrderController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = $this->repository->paginateList();
+
+        $v = $this->getOrderFocus($request);
+
+        if ($v === 'CURRENT' ||$v === 'HISTORIC') {
+            $records = $this->repository->paginateList(10, $v);
+        }else {
+            $records = $this->repository->paginateList();
+        }
 
         return view('shopper::pages.orders.index', compact('records'));
     }

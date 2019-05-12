@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     const STATUS_NEW = 'new';
-    const STATUS_IN_PROGRESS = 'in_progress';
-    const STATUS_COMPETE = 'complete';
-    const STATUS_CANCELED = 'canceled';
+    const STATUS_CONFORMED = 'order_payment_confirmed';
+    const STATUS_IN_PROGRESS = 'order_being_processed';
+    const STATUS_SHIPPED = 'order_shipped';
+    const STATUS_COMPETE = 'order_complete';
+    const STATUS_CANCELED = 'order_canceled';
 
     /**
      * {@inheritDoc}

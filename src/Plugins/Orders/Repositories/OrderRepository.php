@@ -96,8 +96,20 @@ class OrderRepository
      * @param int $count
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginateList(int $count = 10)
+    public function paginateList(int $count = 10,string $filter= null)
     {
+        if ($filter === 'CURRENT') {
+            return $this->model
+                ->where('status_id', '<', 5)
+                ->with(['user', 'status', 'shippingType', 'paymentMethod'])
+                ->paginate($count);
+        } elseif ($filter === 'HISTORIC') {
+            return $this->model
+                ->where('status_id', '>', 4)
+                ->with(['user', 'status', 'shippingType', 'paymentMethod'])
+                ->paginate($count);
+        }
+
         return $this->model
             ->with(['user', 'status', 'shippingType', 'paymentMethod'])
             ->paginate($count);
@@ -180,7 +192,7 @@ class OrderRepository
      */
     public function getTotalRevenue()
     {
-        return $this->model->get()->sum('total_price');
+       return $this->model->whereBetween('status_id', [2, 5])->sum('total_price');
     }
 
     /**
@@ -192,6 +204,9 @@ class OrderRepository
      */
     public function ordersStatusList(string $code, int $limit = null)
     {
+        $this->model = Order::query();
+
+
         if (! $limit) {
             return $this->model->join((new Status())->getTable(), 'status_id', '=', (new Status())->getTable(). '.id')
                 ->where((new Status())->getTable(). '.code', '=', $code)

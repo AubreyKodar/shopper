@@ -17,11 +17,11 @@
     <!-- / navbar header  -->
     <!-- navbar collapse  -->
     <div class="app-header wrapper navbar-collapse box-shadow bg-white-only v-center" id='nav-header'>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <a href="javascript:;" class='submenu-bar' id="menu-burger"><i class='icon ion-navicon-round'></i></a>
+            <span style="margin-left: 5px; font-weight: bold;">@yield('title')</span>
         </div>
-        <div class="col-xs-12 col-md-3">
-            <input type="search" id="search-input" placeholder="{{ __('Search here...') }}" name="search" class="form-control" />
+        <div class="col-xs-12 col-md-2">
             <span id="algolia" data-appID="{{ env('ALGOLIA_APP_ID', '') }}" data-client-secret="{{ env('ALGOLIA_CLIENT_SECRET', '') }}" data-logo="{{ asset('shopper/img/search-by-algolia.svg') }}"></span>
         </div>
         <div class="col-xs-12 col-md-8">
@@ -47,7 +47,6 @@
                             </li>
                             <li class="divider"></li>
                             <li><a href="{{ url('/') }}" target="_blank">{{ __('Preview website') }}</a></li>
-                            <li><a href="{{ route('shopper.settings.translate.index') }}">{{ __('Backend Preferences') }}</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

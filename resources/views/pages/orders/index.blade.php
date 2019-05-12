@@ -1,6 +1,13 @@
 @extends('shopper::layouts.dashboard')
-@section('title', __('Orders list'))
+@section('title')
+<?php
+    if(isset($_GET['v'])) {
+        echo $_GET['v'].' ';
+    }
 
+    echo strtoupper(__('Orders list'));
+?>
+@endsection
 @section('content')
 
     <div class="wrapper-md">

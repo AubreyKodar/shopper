@@ -196,12 +196,24 @@ class MenuComposer
         $this->shopper->menu->add('Orders', [
             'slug'       => 'Order',
             'icon'       => 'icon-basket-loaded',
-            'route'      => route('shopper.shoporders.orders.index'),
-            'label'      => __('Orders'),
+            'route'      => route('shopper.shoporders.orders.index').'?v=CURRENT',
+            'label'      => 'Current '.__('Orders'),
             'groupname'  => __('Menu'),
             'childs'     => false,
             'divider'    => false,
             'active'     => 'shopper.shoporders.orders.*',
+            //'permission' => 'dashboard.systems.settings',
+            'sort'       => 1,
+        ]);
+
+
+        $this->shopper->menu->add('Orders', [
+            'slug'       => 'Historical-Order',
+            'icon'       => 'icon-basket-loaded',
+            'route'      => route('shopper.shoporders.orders.index').'?v=HISTORIC',
+            'label'      => 'Historic '.__('Orders'),
+            'childs'     => false,
+            'divider'    => false,
             //'permission' => 'dashboard.systems.settings',
             'sort'       => 1,
         ]);
@@ -378,65 +390,17 @@ class MenuComposer
             'sort'       => 5,
         ]);
 
-        /*$this->shopper->menu->add('Settings', [
-            'slug'       => 'Translate',
-            'icon'       => 'icon-speech',
-            'route'      =>  route('shopper.wip'),
-            'label'      => __('Translate message'),
-            'childs'     => false,
-            'divider'    => false,
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 7,
-        ]);*/
-
-        /*$this->shopper->menu->add('Settings', [
-            'slug'       => 'Analytics',
-            'icon'       => 'fas fa-chart-bar',
-            'route'      => route('shopper.wip'),
-            'groupname'  => __('Analytics'),
-            'label'      => __('Google Analytics'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.settings.analytics.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 9,
-        ]);*/
-
-        $this->shopper->menu->add('Settings', [
-            'slug'       => 'Mailable',
-            'icon'       => 'fas fa-envelope',
-            'route'      => route('shopper.settings.mails.mailables.mailableList'),
-            'groupname'  => __('Mail'),
-            'label'      => __('Mailables'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.settings.mails.mailables.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 20,
-        ]);
-
-        $this->shopper->menu->add('Settings', [
-            'slug'       => 'Mail Templates',
-            'icon'       => 'fas fa-columns',
-            'route'      => route('shopper.settings.mails.templates.templateList'),
-            'label'      => __('Mail Templates'),
-            'childs'     => false,
-            'divider'    => false,
-            'active'     => 'shopper.settings.mails.templates.*',
-            //'permission' => 'dashboard.systems.settings',
-            'sort'       => 21,
-        ]);
-
         $this->shopper->menu->add('Settings', [
             'slug'       => 'Mail Configuration',
             'icon'       => 'fas fa-cog',
             'route'      => route('shopper.settings.mails.config'),
+            'groupname'  => __('Mail'),
             'label'      => __('Mail Configuration'),
             'childs'     => false,
             'divider'    => false,
             'active'     => 'shopper.settings.mails.config',
             //'permission' => 'dashboard.systems.settings',
-            'sort'       => 22,
+            'sort'       => 20,
         ]);
 
         $this->shopper->menu->add('Settings', [

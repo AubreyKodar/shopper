@@ -242,9 +242,6 @@ export default class OrderForm extends ShopperComponent {
           type: response.data.status
         })
 
-        setInterval(function() {
-          window.location = route('shopper.shoporders.orders.index')
-        }, 1500)
       })
       .catch((error) => {
         Message.error(error.response.data.message)

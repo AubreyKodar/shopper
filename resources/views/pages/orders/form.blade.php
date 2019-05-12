@@ -2,7 +2,6 @@
 @section('title', (isset($record->id)) ? __('Edit order') : __('New order'))
 
 @section('content')
-
     <div class="wrapper-md">
         <div class="pull-left">
             <div class="btn-group btn-breadcrumb breadcrumb-default">
@@ -21,7 +20,5 @@
             @endif
         </div>
     </div>
-
     <div id="order-form" class="m-t-md" data-id="@if(isset($record)) {{ $record->id }} @endif" data-devise="{{ setting('site_currency') }}"></div>
-
 @stop
